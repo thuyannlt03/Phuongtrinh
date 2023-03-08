@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Verdana, sans-serif; 
+    margin:0;
+    background-color:bisque;
+}
+.container-pt{
+    width: 500px;
+    margin: auto;
+    background-color: lightskyblue;
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    border: 2px solid #F6E7D8;
+    border-radius: 10px;
+}
+form input[id]{
+    width: 200px;
+    padding: 6px 0;
+    border: 2px solid moccasin;
+    background-color: khaki;
+}
+form button{
+    margin: 10px;
+    padding: 10px;
+    width: 120px;
+    height: 40px;
+}
+.nut{
+    background-color: mediumseagreen;
+    color: aliceblue;
+}
+.nut_khoa{
+    background-color: violet;
+    color: aliceblue;
+}
+#solangiai{
+    color: tomato;
+}
+#kq{
+    height: 200px;
+    margin: 10px 50px 0 50px;
+    border: 3px solid lightcoral;
+}
+#dongho{
+    color: blue;
+    font-style: italic;
+    border: 5px solid green;
+}

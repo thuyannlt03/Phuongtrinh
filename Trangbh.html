@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bang.css">
+    
+</head>
+<body>
+    <div class="container">
+        <center><h1>BÁN HÀNG</h1></center> 
+        <center><select id="mucgia" onchange="doimucgia()"></center>
+        <option value="-1">Chọn mức giá</option>
+        <option value="200">Đến 100</option>
+        <option value="400">Đến 400</option>
+        <option value="600">Đến 700</option>
+        <option value="800">Đến 900</option>
+        </select>
+        <table border="1" id="table_SP">
+            <tr>
+                <th colspan="2">Hàng Hóa</th>
+                <th>Đơn Giá</th>
+                <th>Số lượng</th>
+                <th>Thành Tiền</th>
+            </tr>
+        <tr>
+            <td><input onclick="tich1checkbox(0)" type="checkbox" name="chon"></td>
+            <td>iPhone 11</td>
+            <td name="gia">700</td>
+            <td><input onkeyup="thanhtien(this)" value="0" name="soluong" disabled></td>
+            <td name="thanhtien"></td>
+        </tr>
+        <tr>
+            <td><input onclick="tich1checkbox(1)" type="checkbox" name="chon"></td>
+            <td>Samsung</td>
+            <td name="gia">400</td>
+            <td><input onkeyup="thanhtien(this)" value="0" name="soluong" disabled></td>
+            <td name="thanhtien"></td>
+        </tr>
+        <tr>
+            <td><input onclick="tich1checkbox(2)" type="checkbox" name="chon"></td>
+            <td>Nokia</td>
+            <td name="gia">100</td>
+            <td><input onkeyup="thanhtien(this)" value="0" name="soluong" disabled></td>
+            <td name="thanhtien"></td>
+        </tr>
+        <tr>
+            <td><input onclick="tich1checkbox(3)" type="checkbox" name="chon"> </td>
+            <td>Sony Xperia</td>
+            <td name="gia">450</td>
+            <td><input onkeyup="thanhtien(this)" value="0" name="soluong" disabled></td>
+            <td name="thanhtien"></td>
+        </tr>
+        <tr>
+            <td><input onclick="tich1checkbox(4)" type="checkbox"  name="chon"></td>
+            <td>Motorola</td>
+            <td name="gia">180</td>
+            <td><input onkeyup="thanhtien(this)" value="0" name="soluong" disabled ></td>
+            <td name="thanhtien"></td>
+        </tr>
+        <tr>
+            <td><input onclick="tich1checkbox(5)" type="checkbox" name="chon"></td>
+            <td>Oppo</td>
+            <td name="gia">600</td>
+            <td><input onkeyup="thanhtien(this)" value="0" name="soluong" disabled ></td>
+            <td name="thanhtien"></td>
+        </tr>
+        <tr>
+            <td><input onclick="tich1checkbox(6)" type="checkbox" name="chon"></td>
+            <td>bPhone</td>
+            <td name="gia">90</td>
+            <td><input onkeyup="thanhtien(this)" value="0" name="soluong" disabled ></td>
+            <td name="thanhtien"></td>
+        </tr>
+        <tr class="tong">
+            <th colspan="4">TỔNG</th>
+            <td id="tinhtong"><b> </b></td>
+        </tr>
+        </table>
+        <h2>Nguyễn Lê Thuy Ân</h2>
+        </div>
+        
+</body>
+</html>
+
+<script>
+    function doimucgia() {
+    var arrGia = document.getElementsByName("gia");
+    var obj = document.getElementById("mucgia");
+    mucdangchon = obj.value;
+    for(i=0; i<arrGia.length; i++) {
+            gia = parseFloat(arrGia[i].innerText);
+        if (gia<mucdangchon) {
+            arrGia[i].parentNode.style.display="";
+        }
+        else {
+        arrGia[i].parentNode.style.display="none";
+        }
+    }
+    tongtien();
+}
+</script>
+<script>
+    function tich1checkbox(i){
+        var arrSL = document.getElementsByName("soluong");
+        arrSL[i].disabled =!arrSL[i].disabled;
+
+        if(arrSL[i].disabled==true){
+            arrSL[i].value = 0;
+            arrSL[i].parentNode.nextElementSibling.innerText ="";
+        }
+        tongtien();
+    }
+</script>
+<script>
+    function thanhtien(obj){
+        var soluong = obj.value;
+        var gia = obj.parentNode.previousElementSibling.innerText;
+        obj.parentNode.nextElementSibling.innerText = soluong*gia;
+        tongtien();
+    }
+</script>
+<script>
+    function tongtien(){
+        tt=0;
+        var arrThanhTien =document.getElementsByName("thanhtien");
+        for(i=0; i<arrThanhTien.length;i++){
+            tien = arrThanhTien[i].innerText;
+            tt+= Number(tien);
+        }
+        document.getElementById("tinhtong").innerText=tt;
+    }
+</script>
